@@ -1,0 +1,10 @@
+vendor,event,access_level,status,offboarding_delay_days,anomaly
+HVAC_Vendor,login,medium,active,0,no
+HVAC_Vendor,privilege_escalation,high,active,0,yes
+HVAC_Vendor,payment_network_access,high,active,0,yes
+Cloud_Vendor,login,medium,active,0,no
+Cloud_Vendor,data_access,medium,active,0,no
+SaaS_Vendor,login,low,active,0,no
+SaaS_Vendor,data_access,medium,active,0,no
+Former_Vendor,login,medium,terminated,14,yes
+Former_Vendor,data_access,high,terminated,14,yes
