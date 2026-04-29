@@ -25,14 +25,14 @@ The framework covers:
 
 ## Problem Statement
 
-> **Given continuous vendor activity logs, can we reliably detect third-party access misuse, privilege escalation, and delayed offboarding — automatically, before a compliance review cycle catches it?**
+> **Given continuous vendor activity logs, can we reliably detect third-party access misuse, privilege escalation, and delayed offboarding - automatically, before a compliance review cycle catches it?**
 
 Modern organizations rely on:
-- **Static assessments** — one-time vendor questionnaires that go stale immediately
-- **Periodic audits** — point-in-time snapshots that miss between-cycle risk
-- **Self-attested controls** — no continuous evidence of vendor behavior
+- **Static assessments** - one-time vendor questionnaires that go stale immediately
+- **Periodic audits** - point-in-time snapshots that miss between-cycle risk
+- **Self-attested controls** - no continuous evidence of vendor behavior
 
-These gaps create exploitable windows. The 2013 Target breach demonstrated exactly this: a third-party HVAC vendor's compromised credentials provided the initial foothold into Target's payment network — a risk that continuous monitoring could have flagged.
+These gaps create exploitable windows. The 2013 Target breach demonstrated exactly this: a third-party HVAC vendor's compromised credentials provided the initial foothold into Target's payment network - a risk that continuous monitoring could have flagged.
 
 ---
 
@@ -67,20 +67,20 @@ third-party-risk-monitoring-framework/
 
 ## Methodology
 
-### Step 1 — Log Generation
+### Step 1 - Log Generation
 
 Generated a realistic synthetic vendor activity dataset using `generate_logs.py`, simulating four vendor profiles with distinct risk behaviors:
 
 | Vendor          | Behavior Profile                                              | Risk Indicators                          |
 |-----------------|---------------------------------------------------------------|------------------------------------------|
-| `HVAC_Vendor`   | Target-style breach simulation — privilege escalation + payment network pivot | High access, anomalous events   |
+| `HVAC_Vendor`   | Target-style breach simulation - privilege escalation + payment network pivot | High access, anomalous events   |
 | `Cloud_Vendor`  | Normal operational activity                                   | Low-medium access, no anomalies          |
 | `SaaS_Vendor`   | Normal operational activity                                   | Low access, standard data access         |
 | `Former_Vendor` | Terminated vendor with persistent access                      | Terminated status, 7–30 day offboarding delay |
 
 ---
 
-### Step 2 — Risk Scoring Engine
+### Step 2 - Risk Scoring Engine
 
 `risk_scoring.py` calculates a cumulative risk score per vendor using a weighted indicator model:
 
@@ -103,9 +103,9 @@ Generated a realistic synthetic vendor activity dataset using `generate_logs.py`
 
 ---
 
-### Step 3 — Continuous Audit Monitoring
+### Step 3 - Continuous Audit Monitoring
 
-`audit_monitor.py` replicates a SOC-style continuous monitoring loop — scanning every event row and firing alerts in real time:
+`audit_monitor.py` replicates a SOC-style continuous monitoring loop - scanning every event row and firing alerts in real time:
 
 | Alert Type        | Trigger Condition                                              | Severity    |
 |-------------------|----------------------------------------------------------------|-------------|
@@ -117,9 +117,9 @@ Generated a realistic synthetic vendor activity dataset using `generate_logs.py`
 
 ---
 
-### Step 4 — Risk Visualization
+### Step 4 - Risk Visualization
 
-`dashboard.py` produces a vendor risk score bar chart saved as `vendor_risk_scores.png` — ready for GitHub README, portfolio, or report inclusion.
+`dashboard.py` produces a vendor risk score bar chart saved as `vendor_risk_scores.png` - ready for GitHub README, portfolio, or report inclusion.
 
 ---
 
@@ -132,8 +132,8 @@ Generated a realistic synthetic vendor activity dataset using `generate_logs.py`
 | CRITICAL Alerts Generated           | Varies by run          |
 | HIGH Alerts Generated               | Varies by run          |
 | Vendors Rated HIGH Risk             | 2 (HVAC + Former)      |
-| Offboarding Violations Detected     | Yes — Former_Vendor    |
-| Payment Network Access Flagged      | Yes — HVAC_Vendor      |
+| Offboarding Violations Detected     | Yes - Former_Vendor    |
+| Payment Network Access Flagged      | Yes - HVAC_Vendor      |
 
 > Scores vary between runs due to randomized log generation. Expected output: `HVAC_Vendor: HIGH`, `Former_Vendor: HIGH`, `Cloud_Vendor: LOW–MEDIUM`, `SaaS_Vendor: LOW–MEDIUM`.
 
@@ -141,11 +141,11 @@ Generated a realistic synthetic vendor activity dataset using `generate_logs.py`
 
 ## Key Findings
 
-**HVAC_Vendor — HIGH RISK:** Simulates the Target breach attack vector. Privilege escalation and payment network access events detected. This vendor profile demonstrates how an active third-party credential compromise can go undetected without real-time monitoring.
+**HVAC_Vendor - HIGH RISK:** Simulates the Target breach attack vector. Privilege escalation and payment network access events detected. This vendor profile demonstrates how an active third-party credential compromise can go undetected without real-time monitoring.
 
-**Former_Vendor — HIGH RISK:** Terminated vendor retains active system access with offboarding delays of 7–30 days. CRITICAL alerts fire on continued login and data access post-termination — a direct IAM control failure.
+**Former_Vendor - HIGH RISK:** Terminated vendor retains active system access with offboarding delays of 7–30 days. CRITICAL alerts fire on continued login and data access post-termination - a direct IAM control failure.
 
-**Continuous Monitoring Advantage:** Static TPRM assessments conducted at onboarding or annual review would miss every finding in this dataset. All alerts occur between review cycles — exactly the detection window that continuous monitoring fills.
+**Continuous Monitoring Advantage:** Static TPRM assessments conducted at onboarding or annual review would miss every finding in this dataset. All alerts occur between review cycles - exactly the detection window that continuous monitoring fills.
 
 **Offboarding Gap:** Delayed access revocation for terminated vendors is one of the most common and preventable TPRM failures. The framework flags every instance with an explicit `OFFBOARDING ISSUE` alert tied to the exact delay duration.
 
@@ -188,7 +188,7 @@ Former_Vendor: 160 - HIGH
 
 ## Limitations
 
-- Synthetic dataset — directional simulation, not statistically representative of production vendor volumes
+- Synthetic dataset - directional simulation, not statistically representative of production vendor volumes
 - Risk scoring uses additive weighting; production TPRM tools use normalized scoring with confidence intervals
 - No API integration with real IAM systems (e.g., Okta, Azure AD) for live offboarding status
 - No SOAR playbook integration for automated access revocation on CRITICAL alerts
