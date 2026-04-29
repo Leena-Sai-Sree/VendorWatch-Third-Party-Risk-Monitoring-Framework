@@ -155,7 +155,7 @@ Generated a realistic synthetic vendor activity dataset using `generate_logs.py`
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/third-party-risk-monitoring-framework
+git clone https://github.com/Leena-Sai-Sree/VendorWatch-Third-Party-Risk-Monitoring-Framework
 cd third-party-risk-monitoring-framework
 
 # 2. Install dependencies
@@ -219,16 +219,8 @@ Former_Vendor: 160 - HIGH
 
 ## Author
 
-**[Your Name]**  
+**Leena Sai Sree Maridi**  
 Cybersecurity Graduate Student | GRC · IAM · SOC · TPRM
-
----
-
-## Resume Bullets
-
-> Developed an evidence-driven Third-Party Risk Monitoring and Audit Framework using Python to compare static vendor assessments with continuous monitoring, demonstrating improved visibility into vendor access risks, offboarding gaps, and anomalous third-party activity.
-
-> Built a Python-based TPRM simulation that modeled the 2013 Target breach HVAC vendor pivot scenario, implementing automated risk scoring, continuous audit alerting, and IAM offboarding delay detection across a synthetic vendor lifecycle dataset.
 
 ---
 
